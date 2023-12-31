@@ -1,2 +1,2 @@
-## \Cost Explorer
+## Cost Explorer
 Under construction.
