@@ -5,10 +5,10 @@ import NavbbarLogo from './NavbarLogo.vue'
 
 </script>
 <template>
-    <nav class="bg-gray-900 fixed w-full z-20 top-0 start-0 border-b  border-gray-600 text-base px-8">
+    <nav class=" fixed w-full z-20 top-0 start-0 text-base px-8 bg-gradient-to-r from-blue-50 to-green-50">
         <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
             <NavbbarLogo/>
-            <NavbarButton name="Sign Up"/> 
+            <NavbarButton name="subscribe now"/> 
         </div>
     </nav>
 </template>

@@ -11,7 +11,8 @@ export const useFormData = defineStore('users', {
     city: '',
     children: 0,
     budget: 0,
-    currency: 'USD' 
+    currency: 'USD',
+    date: '' 
   }),
 
 

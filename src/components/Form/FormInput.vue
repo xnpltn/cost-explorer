@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { type } from 'os';
-
 const props = defineProps({
     label: {
         type: String,
@@ -12,7 +10,6 @@ const props = defineProps({
     }
 })
 </script>
-
 
 <template>
     <div class="mb-5">
