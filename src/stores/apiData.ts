@@ -1,27 +1,27 @@
-import { ref, computed, Ref } from 'vue'
+import { ref, computed, Ref, AriaAttributes } from 'vue'
 import { defineStore } from 'pinia'
 import { useFormData } from './formData'
 
 
 
-interface Results {
+interface Results<T> {
   city: string,
   currency : string,
-  costs: Awaited<Cost>[]
+  costs: T[]
 }
 
 interface Cost {
   item: string,
-  cost: string,
-  range: string
+  cost: number,
+  range: { high: string, low: string}
 }
 
 
 export const useApiStore = defineStore('counter', {
-  state: () => ({ 
+  state: ():{city: string, currency: string, costs: Cost[]} => ({ 
     city: '', 
     currency: '',
-    costs : []
+    costs:[]
   }),
 
   getters: {
@@ -34,13 +34,13 @@ export const useApiStore = defineStore('counter', {
     async fill(city: string, currency: string) {
       let myCity = city.trim().split(' ')
       if(myCity.length === 1){
-        const responce: Results = await (await fetch(`https://cost-of-living-api-ruddy.vercel.app/:${city.trim()}?${currency}`)).json()
+        const responce: Results<Cost> = await (await fetch(`https://cost-of-living-api-ruddy.vercel.app/:${city.trim()}?${currency}`)).json()
         this.city = responce.city
         this.currency = responce.currency
         this.costs = responce.costs
       }else{
         let newCity = myCity.join('-')
-        const responce: Results = await (await fetch(`https://cost-of-living-api-ruddy.vercel.app/:${newCity}?${currency}`)).json()
+        const responce: Results<Cost> = await (await fetch(`https://cost-of-living-api-ruddy.vercel.app/:${newCity}?${currency}`)).json()
         this.city = responce.city
         this.currency = responce.currency
         this.costs = responce.costs
